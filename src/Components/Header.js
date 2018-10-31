@@ -13,7 +13,6 @@ export default class Header extends Component{
 
     drop(e){
         e.preventDefault();
-        console.log('drop');
     }
 
     dragOver(e){

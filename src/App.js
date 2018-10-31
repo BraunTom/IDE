@@ -9,7 +9,7 @@ class App extends Component {
     render() {
         return (
             <div className={'App'}>
-                <svg className={'test'} onDragOver={function(e){console.log('over'); e.preventDefault()}}></svg>
+                <svg className={'background'}></svg>
                 <BlockView block={block}/>
             </div>
 

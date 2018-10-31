@@ -1,0 +1,10 @@
+.port{
+    position: relative;
+    background: crimson;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 5px;
+}

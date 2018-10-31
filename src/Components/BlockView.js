@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../ComponentStyles/BlockView.css';
 import Header from "./Header";
 import Point from "../Logic/Point";
+import FlowPortContainer from "./FlowPortContainer";
 
 class BlockView extends Component {
     constructor(props){
@@ -36,9 +37,11 @@ class BlockView extends Component {
     render() {
         return (
             <div style={this.state.position.asCssPosition()} className="BlockView">
-                <Header parentPosition={this.position} dragStart={this.dragStart.bind(this)}
-                        drag={this.drag.bind(this)} title={this.props.block.name}/>
-                <p>{this.state.content}</p>
+                <Header parentPosition={this.position}
+                        dragStart={this.dragStart.bind(this)}
+                        drag={this.drag.bind(this)}
+                        title={this.props.block.name}/>
+                <FlowPortContainer></FlowPortContainer>
             </div>
         );
     }

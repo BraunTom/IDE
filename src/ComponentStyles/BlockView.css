@@ -1,6 +1,9 @@
 .BlockView{
     position: absolute;
-    background: #61dafb;
+    background: rgba(97, 218, 252, 0.5);
     width: 100px;
     height: 100px;
+
+    border-radius: 3px;
+    overflow: hidden;
 }
