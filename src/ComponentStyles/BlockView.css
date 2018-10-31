@@ -1,4 +1,5 @@
 .BlockView{
+    position: absolute;
     background: #61dafb;
     width: 100px;
     height: 100px;
