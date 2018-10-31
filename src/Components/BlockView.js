@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../ComponentStyles/BlockView.css';
 import Header from "./Header";
 import Point from "../Logic/Point";
-import FlowPortContainer from "./FlowPortContainer";
+import PortContainer from "./PortContainer";
 
 class BlockView extends Component {
     constructor(props){
@@ -41,7 +41,8 @@ class BlockView extends Component {
                         dragStart={this.dragStart.bind(this)}
                         drag={this.drag.bind(this)}
                         title={this.props.block.name}/>
-                <FlowPortContainer ports={this.props.block.flowConnections}/>
+                <PortContainer ports={this.props.block.flowConnections}/>
+                <PortContainer ports={this.props.block.dataConnections}/>
             </div>
         );
     }

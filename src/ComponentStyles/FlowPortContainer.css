@@ -1,7 +1,0 @@
-.flowPortContainer{
-    position: relative;
-    background: chartreuse;
-
-    display: grid;
-    grid-template-columns: 15px auto 15px;
-}
