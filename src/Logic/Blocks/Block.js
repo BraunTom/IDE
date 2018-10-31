@@ -1,4 +1,4 @@
-import FlowConnections from "../FlowConnections";
+import FlowConnections from "../Ports/FlowConnections";
 
 export default class Block{
     constructor(ID, name){
@@ -6,6 +6,6 @@ export default class Block{
         this.type = 'basicBlock';
         this.name = name;
 
-        this.flowConnections = new FlowConnections(1, 1);
+        this.flowConnections = new FlowConnections(1, 2);
     }
 }

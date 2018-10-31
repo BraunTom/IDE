@@ -41,7 +41,7 @@ class BlockView extends Component {
                         dragStart={this.dragStart.bind(this)}
                         drag={this.drag.bind(this)}
                         title={this.props.block.name}/>
-                <FlowPortContainer></FlowPortContainer>
+                <FlowPortContainer ports={this.props.block.flowConnections}/>
             </div>
         );
     }
