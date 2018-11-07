@@ -1,19 +1,8 @@
-import FlowPortIn from "./FlowPortIn";
-import FlowPortOut from "./FlowPortOut";
+import TheOneBuilder from "../Builder/TheOneBuilder";
 
 export default class FlowConnections{
     constructor(inputCount, outputCount){
-        this.inputs = this.initArray(inputCount, FlowPortIn);
-        this.outputs = this.initArray(outputCount, FlowPortOut);
-    }
-
-    initArray(length, portClass){
-        let arr = [];
-
-        for(let i = 0; i < length; i++){
-            arr.push(new portClass(i));
-        }
-
-        return arr;
+        this.inputs = TheOneBuilder.buildLeftFlowPorts(inputCount);
+        this.outputs = TheOneBuilder.buildRightFlowPorts(outputCount);
     }
 }

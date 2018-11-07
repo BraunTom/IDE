@@ -7,7 +7,7 @@ import PortContainer from "./PortContainer";
 class BlockView extends Component {
     constructor(props){
         super(props);
-        this.state = {position: new Point(0, 0)}
+        this.state = {position: this.props.position || new Point(0, 0)}
     }
 
     get position(){
@@ -25,6 +25,8 @@ class BlockView extends Component {
             position: new Point(x, y)
         });
     }
+
+
 
     dragStart(x, y){
         this.updatePosition(x, y);

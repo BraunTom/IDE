@@ -1,14 +1,16 @@
-export default class Port{
-    constructor(ID){
+export default class Port{              // TODO remove all other classes
+    constructor(ID, gridArea, color = 'black'){
         this.ID = ID;
+        this._gridArea = gridArea;
+        this.color = color;
     }
 
     get gridArea(){
-        return 'none';
+        return this._gridArea;
     }
 
     get backgroundColor(){
-        return 'red';
+        return this.color;
     }
 
     style(){

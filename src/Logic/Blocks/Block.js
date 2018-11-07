@@ -8,6 +8,6 @@ export default class Block{
         this.name = name;
 
         this.flowConnections = new FlowConnections(1, 2);
-        this.dataConnections = new DataConnections(1, 1);
+        this.dataConnections = new DataConnections(3, 1);
     }
 }

@@ -1,10 +1,9 @@
-import DataPortIn from "./DataPortIn";
-import DataPortOut from "./DataPortOut";
+import TheOneBuilder from "../Builder/TheOneBuilder";
 
 export default class DataConnections{
     constructor(inputCount, outputCount){
-        this.inputs = this.initArray(inputCount, DataPortIn);
-        this.outputs = this.initArray(outputCount, DataPortOut);
+        this.inputs = TheOneBuilder.buildLeftDataPorts(inputCount);
+        this.outputs = TheOneBuilder.buildRightDataPorts(outputCount);
     }
 
     initArray(length, portClass){
