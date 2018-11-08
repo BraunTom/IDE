@@ -26,8 +26,6 @@ class BlockView extends Component {
         });
     }
 
-
-
     dragStart(x, y){
         this.updatePosition(x, y);
     }
