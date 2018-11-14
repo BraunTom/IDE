@@ -4,14 +4,16 @@ import PortView from "./PortView";
 
 export default class DataPortContainer extends Component{
     generatePortViewFor(array){
-        return array.map(elm => <PortView id={elm.ID} style={elm.style()}/>)
+        return array.map(elm => <PortView key={elm.ID} style={elm.style()}/>)
     }
 
     generateGridTemplateAreas(count){
         let result = [];
+
         for(let i = 0; i < count; i++){
             result.push(`"left${i} . right${i}"`);
         }
+
         return result.join('\n');
     }
 
@@ -23,12 +25,12 @@ export default class DataPortContainer extends Component{
 
         return (
             <div style={{
-                gridTemplateRows: gridTemplateRowStyle,
-                gridTemplateAreas: this.generateGridTemplateAreas(rowCount),
-                height: rowCount * 15}}
+                    gridTemplateRows: gridTemplateRowStyle,
+                    gridTemplateAreas: this.generateGridTemplateAreas(rowCount),
+                    height: rowCount * 15}}
                  className={'flowPortContainer'}>
-                {this.generatePortViewFor(inputs)}
-                {this.generatePortViewFor(outputs)}
+                    {this.generatePortViewFor(inputs)}
+                    {this.generatePortViewFor(outputs)}
             </div>
         );
     }

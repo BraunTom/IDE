@@ -20,19 +20,19 @@ export default class TheOneBuilder{     //to build them all
         return TheOneBuilder.blockBuilder.buildBlock(TheOneBuilder.ID, name);
     }
 
-    static buildLeftDataPorts(count){
-        return collect(x => TheOneBuilder.portBuilder.buildLeftDataPort(x), count);
+    static buildLeftDataPorts(count, block){
+        return collect(x => TheOneBuilder.portBuilder.buildLeftDataPort(x, block), count);
     }
 
-    static buildRightDataPorts(count){
-        return collect(x => TheOneBuilder.portBuilder.buildRightDataPort(x), count);
+    static buildRightDataPorts(count, block){
+        return collect(x => TheOneBuilder.portBuilder.buildRightDataPort(x, block), count);
     }
 
-    static buildLeftFlowPorts(count){
-        return collect(x => TheOneBuilder.portBuilder.buildLeftFlowPort(x), count);
+    static buildLeftFlowPorts(count, block){
+        return collect(x => TheOneBuilder.portBuilder.buildLeftFlowPort(x, block), count);
     }
 
-    static buildRightFlowPorts(count){
-        return collect(x => TheOneBuilder.portBuilder.buildRightFlowPort(x), count);
+    static buildRightFlowPorts(count, block){
+        return collect(x => TheOneBuilder.portBuilder.buildRightFlowPort(x, block), count);
     }
 }

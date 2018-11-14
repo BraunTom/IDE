@@ -3,6 +3,11 @@ import '../ComponentStyles/Header.css';
 import Point from "../Logic/Point";
 
 export default class Header extends Component{
+    constructor(props){
+        super(props);
+        this.img = this.createDragImage();
+    }
+
     createDragImage(){
         const img = document.createElement('canvas');
         img.width = 1;
@@ -12,7 +17,6 @@ export default class Header extends Component{
     }
 
     dragStart(e){
-        this.img = this.createDragImage();
         document.body.appendChild(this.img);
 
         e.dataTransfer.effectAllowed = 'move';

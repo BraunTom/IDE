@@ -1,23 +1,23 @@
 import Port from "../Ports/Port";
 
 export default class PortBuilder{
-    buildFlowPort(ID, direction, color){
-        return new Port(ID, `${direction}${ID}`, color);
+    buildFlowPort(ID, block, direction, color){
+        return new Port(ID, block, `${direction}${ID}`, color);
     }
 
-    buildLeftDataPort(ID = 0){
-        return this.buildFlowPort(ID, 'left', 'blue');
+    buildLeftDataPort(ID = 0, block){
+        return this.buildFlowPort(ID, block, 'left', 'blue');
     }
 
-    buildRightDataPort(ID = 0){
-        return this.buildFlowPort(ID, 'right', 'blue');
+    buildRightDataPort(ID = 0, block){
+        return this.buildFlowPort(ID, block, 'right', 'blue');
     }
 
-    buildLeftFlowPort(ID = 0){
-        return this.buildFlowPort(ID, 'left', 'red');
+    buildLeftFlowPort(ID = 0, block){
+        return this.buildFlowPort(ID, block, 'left', 'red');
     }
 
-    buildRightFlowPort(ID = 0){
-        return this.buildFlowPort(ID, 'right', 'red');
+    buildRightFlowPort(ID = 0, block){
+        return this.buildFlowPort(ID, block, 'right', 'red');
     }
 }

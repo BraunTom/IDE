@@ -1,10 +1,11 @@
-import {ADD_BLOCK, SET_VISIBILITY_FILTER, UPDATE_BLOCK_NAME, VisibilityFilters} from "./action";
+import {ADD_BLOCK, ADD_CONNECTION, SET_VISIBILITY_FILTER, UPDATE_BLOCK_NAME, VisibilityFilters} from "./action";
 import {combineReducers} from "redux";
 const {SHOW_ALL} = VisibilityFilters;
 
 export const initialState = {
     visibilityFilter: VisibilityFilters.SHOW_ALL,
-    blocks: []
+    blocks: [],
+    connections: []
 };
 
 function blocks(state = [], action){
@@ -17,7 +18,7 @@ function blocks(state = [], action){
         case UPDATE_BLOCK_NAME:
             return state.map(block => {
                 if(action.block === block){
-                    action.block.name = action.name;
+                    action.block.name = action.newName;
                     return action.block;
                 }
 
@@ -25,6 +26,18 @@ function blocks(state = [], action){
             });
         default:
             return state
+    }
+}
+
+function connections(state = [], action){
+    switch(action.type){
+        case ADD_CONNECTION:
+            return [
+                ...state,
+                action.connection
+            ];
+        default:
+            return state;
     }
 }
 
@@ -37,6 +50,6 @@ function visibilityFilter(state = SHOW_ALL, action){
     }
 }
 
-const todoApp = combineReducers({visibilityFilter, blocks});
+const todoApp = combineReducers({visibilityFilter, blocks, connections});
 
 export default todoApp;
