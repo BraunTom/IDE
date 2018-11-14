@@ -4,17 +4,18 @@ import ConnectionView from "../../Components/ConnectionView";
 import StoreSegment from "./StoreSegment";
 
 export default class Store{
-    constructor(){
+    constructor(externFunctions){
         this.blocks = new StoreSegment();
         this.connections = new StoreSegment();
+        this.externFunctions = externFunctions;
     }
 
-    addBlock(block){
-        this.blocks.add(block, <BlockView block={block}/>);
+    addBlock(block, app){
+        this.blocks.add(block, <BlockView app={app} key={block.ID} block={block}/>);
     }
 
     addConnection(connection){
-        this.connections.add(connection, <ConnectionView connection={connection}/>);
+        this.connections.add(connection, <ConnectionView key={connection.ID} connection={connection}/>);
     }
 
     get blockViews(){

@@ -17,7 +17,7 @@ export default class TheOneBuilder{     //to build them all
     static blockBuilder = new BlockBuilder();
 
     static buildBlock(name){
-        return TheOneBuilder.blockBuilder.buildBlock(TheOneBuilder.ID, name);
+        return TheOneBuilder.blockBuilder.buildBlock(TheOneBuilder.ID++, name);
     }
 
     static buildLeftDataPorts(count, block){
