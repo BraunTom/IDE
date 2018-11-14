@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import TheOneBuilder from "./Logic/Builder/TheOneBuilder";
-import Store from "./Logic/Store";
+import Store from "./Logic/Store/Store";
 
 
 const store = new Store();
