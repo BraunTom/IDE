@@ -1,10 +1,15 @@
-import {ADD_BLOCK, SET_VISIBILITY_FILTER, UPDATE_BLOCK_NAME, VisibilityFilters} from "./actions";
+import {ADD_BLOCK, ADD_CONNECTION, SET_VISIBILITY_FILTER, UPDATE_BLOCK_NAME, VisibilityFilters} from "./actions";
 import {combineReducers} from "redux";
+import ConnectionView from "../../Components/ConnectionView";
+import React from "react";
 const {SHOW_ALL} = VisibilityFilters;
 
 export const initialState = {
     visibilityFilter: VisibilityFilters.SHOW_ALL,
-    blocks: []
+    blocks: [],
+    blockViewModels: [],
+    connections: [],
+    connectionViewModels: []
 };
 
 function blocks(state = [], action){
@@ -28,6 +33,42 @@ function blocks(state = [], action){
     }
 }
 
+function blockViewModels(state = [], action){
+    switch(action.type){
+        case ADD_BLOCK:
+            return [
+                ...state,
+                action.blockViewModel
+            ];
+        default:
+            return state;
+    }
+}
+
+function connections(state = [], action){
+    switch(action.type){
+        case ADD_CONNECTION:
+            return [
+                ...state,
+                action.connection
+            ];
+        default:
+            return state;
+    }
+}
+
+function connectionViewModels(state = [], action){
+    switch(action.type){
+        case ADD_CONNECTION:
+            return [
+                ...state,
+                action.connectionViewModel
+            ];
+        default:
+            return state;
+    }
+}
+
 function visibilityFilter(state = SHOW_ALL, action){
     switch(action.type){
         case SET_VISIBILITY_FILTER:
@@ -37,6 +78,6 @@ function visibilityFilter(state = SHOW_ALL, action){
     }
 }
 
-const blockStore = combineReducers({visibilityFilter, blocks});
+const blockStore = combineReducers({visibilityFilter, blocks, blockViewModels, connections, connectionViewModels});
 
 export default blockStore;

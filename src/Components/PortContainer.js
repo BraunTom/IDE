@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import '../ComponentStyles/PortContainer.css';
 import PortView from "./PortView";
+import PortViewModel from "../ViewModel/PortViewModel";
 
 export default class DataPortContainer extends Component{
     generatePortViewFor(array){
-        return array.map(elm => <PortView key={elm.ID} style={elm.style()}/>)
+        return array.map(elm => <PortView key={elm.ID} viewModel={new PortViewModel(elm)} style={elm.style()}/>)
     }
 
     generateGridTemplateAreas(count){

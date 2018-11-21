@@ -7,7 +7,7 @@ import PortContainer from "./PortContainer";
 class BlockView extends Component {
     constructor(props){
         super(props);
-        this.state = {position: this.props.position || new Point(0, 0)};
+        this.props.viewModel.bind(this);
     }
 
     get position(){
@@ -21,9 +21,7 @@ class BlockView extends Component {
     }
 
     setPosition(x, y){
-        this.setState({
-            position: new Point(x, y)
-        });
+        this.props.viewModel.position = new Point(x, y);
     }
 
     dragStart(x, y){
@@ -40,9 +38,9 @@ class BlockView extends Component {
                 <Header parentPosition={this.position}
                         dragStart={this.dragStart.bind(this)}
                         drag={this.drag.bind(this)}
-                        title={this.props.block.name}/>
-                <PortContainer ports={this.props.block.flowConnections}/>
-                <PortContainer ports={this.props.block.dataConnections}/>
+                        title={this.props.viewModel.name}/>
+                <PortContainer ports={this.props.viewModel.flowConnections}/>
+                <PortContainer ports={this.props.viewModel.dataConnections}/>
             </div>
         );
     }

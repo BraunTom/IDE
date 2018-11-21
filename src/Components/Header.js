@@ -26,7 +26,7 @@ export default class Header extends Component{
     }
 
     drag(e){
-        this.props.drag((new Point(e.pageX, e.pageY)).add(...this.dragStartDifference));
+        this.props.drag(this.dragStartDifference.add(...new Point(e.pageX, e.pageY)));
     }
 
     drop(e){
