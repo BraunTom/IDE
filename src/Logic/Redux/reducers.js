@@ -1,6 +1,12 @@
-import {ADD_BLOCK, ADD_CONNECTION, SET_VISIBILITY_FILTER, UPDATE_BLOCK_NAME, VisibilityFilters} from "./actions";
+import {
+    ADD_BLOCK,
+    ADD_CONNECTION,
+    SET_DRAG_START,
+    SET_VISIBILITY_FILTER,
+    UPDATE_BLOCK_NAME,
+    VisibilityFilters
+} from "./actions";
 import {combineReducers} from "redux";
-import ConnectionView from "../../Components/ConnectionView";
 import React from "react";
 const {SHOW_ALL} = VisibilityFilters;
 
@@ -9,7 +15,8 @@ export const initialState = {
     blocks: [],
     blockViewModels: [],
     connections: [],
-    connectionViewModels: []
+    connectionViewModels: [],
+    dragStart: null
 };
 
 function blocks(state = [], action){
@@ -69,6 +76,15 @@ function connectionViewModels(state = [], action){
     }
 }
 
+function dragStart(state = null, action){
+    switch(action.type){
+        case SET_DRAG_START:
+            return action.start;
+        default:
+            return state;
+    }
+}
+
 function visibilityFilter(state = SHOW_ALL, action){
     switch(action.type){
         case SET_VISIBILITY_FILTER:
@@ -78,6 +94,7 @@ function visibilityFilter(state = SHOW_ALL, action){
     }
 }
 
-const blockStore = combineReducers({visibilityFilter, blocks, blockViewModels, connections, connectionViewModels});
+const blockStore = combineReducers({visibilityFilter, dragStart, blocks,
+    blockViewModels, connections, connectionViewModels});
 
 export default blockStore;

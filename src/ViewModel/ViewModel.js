@@ -7,8 +7,8 @@ export default class ViewModel{
     initialize(){}
 
     bind(view){
-        this.view = view;
-        this.view.state = this.bindProperties();
+        this.myView = view;
+        this.myView.state = this.bindProperties();
     }
 
     bindProperties(){
@@ -20,11 +20,11 @@ export default class ViewModel{
     }
 
     updateView(nameOfUpdatedProperty, internalName = nameOfUpdatedProperty){
-        if(!this.view){
-            console.warn('Tried to update unbound view. Don\'t know what to update');
+        if(!this.myView){
+            console.warn('Tried to update unbound myView. Don\'t know what to update');
             return;
         }
 
-        this.view.setState(this.updateProperties()[nameOfUpdatedProperty](this[internalName]))
+        this.myView.setState(this.updateProperties()[nameOfUpdatedProperty](this[internalName]))
     }
 }

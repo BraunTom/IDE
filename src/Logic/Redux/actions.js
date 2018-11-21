@@ -1,12 +1,10 @@
-import BlockView from "../../Components/BlockView";
 import React from "react";
-import ConnectionView from "../../Components/ConnectionView";
-import TheOneBuilder from "../Builder/TheOneBuilder";
 import BlockViewModel from "../../ViewModel/BlockViewModel";
 import ConnectionViewModel from "../../ViewModel/ConnectionViewModel";
 import Point from "../Point";
 
 export const ADD_BLOCK = 'ADD_BLOCK';
+export const SET_DRAG_START = 'SET_DRAG_START';
 export const ADD_CONNECTION = 'ADD_CONNECTION';
 export const UPDATE_BLOCK_NAME = 'UPDATE_BLOCK_NAME';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
@@ -24,7 +22,12 @@ export function updateBlockName(block, newName){
     return { type: UPDATE_BLOCK_NAME, block, newName };
 }
 
-export function addConnection(connection, start, end){
+export function addConnection(start, end){
+    const connection = {};
     const connectionViewModel = new ConnectionViewModel(connection, start, end);
     return { type: ADD_CONNECTION, connection, connectionViewModel };
+}
+
+export function setDragStart(start){
+    return { type: SET_DRAG_START, start }
 }

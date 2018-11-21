@@ -6,13 +6,11 @@ export default class BlockViewModel extends ViewModel{
         this._position = position;
     }
 
-
     bindProperties() {
         return {
             position: this.position
         };
     }
-
 
     updateProperties() {
         return {

@@ -5,11 +5,6 @@ import Point from "../Logic/Point";
 import PortContainer from "./PortContainer";
 
 class BlockView extends Component {
-    constructor(props){
-        super(props);
-        this.props.viewModel.bind(this);
-    }
-
     get position(){
         return this.state.position;
     }
@@ -33,6 +28,7 @@ class BlockView extends Component {
     }
 
     render() {
+        this.props.viewModel.bind(this);
         return (
             <div style={this.state.position.asCssPosition()} className="BlockView">
                 <Header parentPosition={this.position}

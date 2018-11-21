@@ -1,9 +1,14 @@
-export default class Port{              // TODO remove all other classes
-    constructor(ID, owner, gridArea, color = 'black'){
+export default class Port{
+    constructor(ID, owner, type, gridArea, color = 'black'){
         this.ID = ID;
         this._gridArea = gridArea;
         this.color = color;
+        this.type = type;   // { type, direction }
         this.owner = owner;
+    }
+
+    matches(otherModel){
+        return this.type.type === otherModel.type.type && this.type.direction !== otherModel.type.direction;
     }
 
     get gridArea(){

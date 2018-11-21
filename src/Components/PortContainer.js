@@ -5,7 +5,8 @@ import PortViewModel from "../ViewModel/PortViewModel";
 
 export default class DataPortContainer extends Component{
     generatePortViewFor(array){
-        return array.map(elm => <PortView key={elm.ID} viewModel={new PortViewModel(elm)} style={elm.style()}/>)
+        return array.map(elm => <PortView key={elm.ID}
+                                          viewModel={new PortViewModel(elm)} style={elm.style()}/>)
     }
 
     generateGridTemplateAreas(count){
