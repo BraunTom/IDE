@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import '../ComponentStyles/PortContainer.css';
 import PortView from "./PortView";
-import PortViewModel from "../ViewModel/PortViewModel";
 
 export default class DataPortContainer extends Component{
+    constructor(props){
+        super(props);
+        this.state = {inputPortView: this.generatePortViewFor(this.props.ports.inputs),
+                      outputPortView: this.generatePortViewFor(this.props.ports.outputs)};
+    }
+
     generatePortViewFor(array){
-        return array.map(elm => <PortView key={elm.ID}
-                                          viewModel={new PortViewModel(elm)} style={elm.style()}/>)
+        return array.map(port => <PortView key={port.ID} port={port} style={port.style()}/>);
     }
 
     generateGridTemplateAreas(count){
@@ -31,8 +35,8 @@ export default class DataPortContainer extends Component{
                     gridTemplateAreas: this.generateGridTemplateAreas(rowCount),
                     height: rowCount * 15}}
                  className={'flowPortContainer'}>
-                    {this.generatePortViewFor(inputs)}
-                    {this.generatePortViewFor(outputs)}
+                    {this.state.inputPortView}
+                    {this.state.outputPortView}
             </div>
         );
     }

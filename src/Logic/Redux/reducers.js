@@ -13,9 +13,9 @@ const {SHOW_ALL} = VisibilityFilters;
 export const initialState = {
     visibilityFilter: VisibilityFilters.SHOW_ALL,
     blocks: [],
-    blockViewModels: [],
+    blockViews: [],
     connections: [],
-    connectionViewModels: [],
+    connectionViews: [],
     dragStart: null
 };
 
@@ -40,12 +40,12 @@ function blocks(state = [], action){
     }
 }
 
-function blockViewModels(state = [], action){
+function blockViews(state = [], action){
     switch(action.type){
         case ADD_BLOCK:
             return [
                 ...state,
-                action.blockViewModel
+                action.blockView
             ];
         default:
             return state;
@@ -64,12 +64,12 @@ function connections(state = [], action){
     }
 }
 
-function connectionViewModels(state = [], action){
+function connectionViews(state = [], action){
     switch(action.type){
         case ADD_CONNECTION:
             return [
                 ...state,
-                action.connectionViewModel
+                action.connectionView
             ];
         default:
             return state;
@@ -95,6 +95,6 @@ function visibilityFilter(state = SHOW_ALL, action){
 }
 
 const blockStore = combineReducers({visibilityFilter, dragStart, blocks,
-    blockViewModels, connections, connectionViewModels});
+    blockViews, connections, connectionViews});
 
 export default blockStore;

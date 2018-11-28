@@ -1,7 +1,7 @@
 import React from "react";
-import BlockViewModel from "../../ViewModel/BlockViewModel";
-import ConnectionViewModel from "../../ViewModel/ConnectionViewModel";
 import Point from "../Point";
+import ConnectionView from "../../Components/ConnectionView";
+import BlockView from "../../Components/BlockView";
 
 export const ADD_BLOCK = 'ADD_BLOCK';
 export const SET_DRAG_START = 'SET_DRAG_START';
@@ -14,8 +14,8 @@ export const VisibilityFilters = {
 };
 
 export function addBlock(block, position = new Point(0, 0)){
-    const blockViewModel = new BlockViewModel(block, position);
-    return { type: ADD_BLOCK, block, blockViewModel };
+    const blockView = <BlockView block={block}/>;
+    return { type: ADD_BLOCK, block, blockView };
 }
 
 export function updateBlockName(block, newName){
@@ -24,8 +24,8 @@ export function updateBlockName(block, newName){
 
 export function addConnection(start, end){
     const connection = {};
-    const connectionViewModel = new ConnectionViewModel(connection, start, end);
-    return { type: ADD_CONNECTION, connection, connectionViewModel };
+    const connectionView = <ConnectionView start={start} end={end}/>;
+    return { type: ADD_CONNECTION, connection, connectionView };
 }
 
 export function setDragStart(start){

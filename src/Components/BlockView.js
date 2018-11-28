@@ -5,6 +5,15 @@ import Point from "../Logic/Point";
 import PortContainer from "./PortContainer";
 
 class BlockView extends Component {
+    constructor(props){
+        super(props);
+
+        this.flowConnections = <PortContainer ports={this.props.block.flowConnections}/>;
+        this.dataConnections = <PortContainer ports={this.props.block.dataConnections}/>;
+
+        this.state = {position: new Point(0, 0)};
+    }
+
     get position(){
         return this.state.position;
     }
@@ -16,7 +25,9 @@ class BlockView extends Component {
     }
 
     setPosition(x, y){
-        this.props.viewModel.position = new Point(x, y);
+        this.setState({
+            position: new Point(x, y)
+        });
     }
 
     dragStart(x, y){
@@ -28,15 +39,14 @@ class BlockView extends Component {
     }
 
     render() {
-        this.props.viewModel.bind(this);
         return (
-            <div style={this.state.position.asCssPosition()} className="BlockView">
-                <Header parentPosition={this.position}
+            <div style={this.position.asCssPosition()} className="BlockView">
+                <Header parentPosition={this.state.position}
                         dragStart={this.dragStart.bind(this)}
                         drag={this.drag.bind(this)}
-                        title={this.props.viewModel.name}/>
-                <PortContainer ports={this.props.viewModel.flowConnections}/>
-                <PortContainer ports={this.props.viewModel.dataConnections}/>
+                        title={this.props.block.name}/>
+                {this.flowConnections}
+                {this.dataConnections}
             </div>
         );
     }

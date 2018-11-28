@@ -8,19 +8,25 @@ import Point from "./Logic/Point";
 import ConnectionView from "./Components/ConnectionView";
 
 class App extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    addBlock(x, y){
+        this.props.addBlock(TheOneBuilder.buildBlock('Test'), new Point(x, y));
+    }
+
     doubleClick(e){
-        this.props.addBlock(TheOneBuilder.buildBlock('Test'), new Point(e.pageX, e.pageY));
+        this.addBlock(e.pageX, e.pageY);
     }
 
     render() {
         return (
             <div className={'App'} onDoubleClick={this.doubleClick.bind(this)}>
                 <svg className={'background'}>
-                    {this.props.connectionViewModels.map((model, index) =>
-                        <ConnectionView key={index} viewModel={model}/>)}
+                    {this.props.connectionViews}
                 </svg>
-                {this.props.blockViewModels.map((model, index) =>
-                    <BlockView key={index} viewModel={model}/>)}
+                {this.props.blockViews}
             </div>
         );
     }
@@ -30,8 +36,8 @@ function mapStateToProps(state){
     return {
         store: state,
         blocks: state.blocks,
-        blockViewModels: state.blockViewModels,
-        connectionViewModels: state.connectionViewModels
+        blockViews: state.blockViews,
+        connectionViews: state.connectionViews
     }
 }
 

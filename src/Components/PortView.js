@@ -5,24 +5,25 @@ import {connect} from "react-redux";
 
 class PortView extends Component{
     dragOver(e){
-        if(this.props.dragStart !== this && this.props.dragStart.props.viewModel.wantsDrop(this.props.viewModel)){
+        if(this.props.dragStart !== this && this.props.dragStart.port.matches(this.port)){
             e.preventDefault();
         }
     }
 
+    get port(){
+        return this.props.port;
+    }
+
     dragStart(e){
-        console.log('start');
         e.dataTransfer.effectAllowed = 'move';
         this.props.setDragStart(this);
     }
 
     static drop(e){
-        console.log('drop');
-        this.props.addConnection(this.props.dragStart.props.viewModel, this.props.viewModel);
+        this.props.addConnection(this.props.dragStart, this);
     }
 
     render(){
-        this.props.viewModel.bind(this);
         return (
             <div
                 className={'port'}
