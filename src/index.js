@@ -16,8 +16,6 @@ const store = createStore(blockStore, initialState);
 
 store.dispatch(addBlock(TheOneBuilder.buildBlock('Hello')));
 
-console.log(require('os'));
-
 render(
     <Provider store={store}>
         <InterpreterProvider value={5}>
