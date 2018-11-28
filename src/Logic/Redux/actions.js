@@ -7,6 +7,7 @@ export const ADD_BLOCK = 'ADD_BLOCK';
 export const SET_DRAG_START = 'SET_DRAG_START';
 export const ADD_CONNECTION = 'ADD_CONNECTION';
 export const UPDATE_BLOCK_NAME = 'UPDATE_BLOCK_NAME';
+export const BRING_BLOCK_TO_FRONT = 'BRING_BLOCK_TO_FRONT';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 export const VisibilityFilters = {
@@ -14,12 +15,16 @@ export const VisibilityFilters = {
 };
 
 export function addBlock(block, position = new Point(0, 0)){
-    const blockView = <BlockView block={block}/>;
+    const blockView = <BlockView block={block} inititalPosition={position}/>;
     return { type: ADD_BLOCK, block, blockView };
 }
 
 export function updateBlockName(block, newName){
     return { type: UPDATE_BLOCK_NAME, block, newName };
+}
+
+export function bringBlockToFront(block){
+    return { type: BRING_BLOCK_TO_FRONT, block }
 }
 
 export function addConnection(start, end){

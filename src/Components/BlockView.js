@@ -3,19 +3,25 @@ import '../ComponentStyles/BlockView.css';
 import Header from "./Header";
 import Point from "../Logic/Point";
 import PortContainer from "./PortContainer";
+import {bringBlockToFront} from "../Logic/Redux/actions";
+import connect from "react-redux/es/connect/connect";
 
 class BlockView extends Component {
     constructor(props){
         super(props);
 
-        this.flowConnections = <PortContainer ports={this.props.block.flowConnections}/>;
-        this.dataConnections = <PortContainer ports={this.props.block.dataConnections}/>;
+        this.flowConnections = <PortContainer ports={this.block.flowConnections}/>;
+        this.dataConnections = <PortContainer ports={this.block.dataConnections}/>;
 
-        this.state = {position: new Point(0, 0)};
+        this.state = {position: this.props.inititalPosition};
     }
 
     get position(){
         return this.state.position;
+    }
+
+    get block(){
+        return this.props.block;
     }
 
     updatePosition(dx, dy){
@@ -31,6 +37,7 @@ class BlockView extends Component {
     }
 
     dragStart(x, y){
+        this.props.bringBlockToFront(this.block);
         this.updatePosition(x, y);
     }
 
@@ -41,10 +48,10 @@ class BlockView extends Component {
     render() {
         return (
             <div style={this.position.asCssPosition()} className="BlockView">
-                <Header parentPosition={this.state.position}
+                <Header parentPosition={this.position}
                         dragStart={this.dragStart.bind(this)}
                         drag={this.drag.bind(this)}
-                        title={this.props.block.name}/>
+                        title={this.block.name}/>
                 {this.flowConnections}
                 {this.dataConnections}
             </div>
@@ -52,4 +59,14 @@ class BlockView extends Component {
     }
 }
 
-export default BlockView;
+function mapStateToProps(state){
+    return {}
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        bringBlockToFront: block => bringBlockToFront(block)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(BlockView);

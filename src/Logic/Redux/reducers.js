@@ -1,13 +1,12 @@
 import {
     ADD_BLOCK,
-    ADD_CONNECTION,
+    ADD_CONNECTION, BRING_BLOCK_TO_FRONT,
     SET_DRAG_START,
     SET_VISIBILITY_FILTER,
     UPDATE_BLOCK_NAME,
     VisibilityFilters
 } from "./actions";
 import {combineReducers} from "redux";
-import React from "react";
 const {SHOW_ALL} = VisibilityFilters;
 
 export const initialState = {
@@ -46,6 +45,15 @@ function blockViews(state = [], action){
             return [
                 ...state,
                 action.blockView
+            ];
+        case BRING_BLOCK_TO_FRONT:
+            let stateCopy = state.slice();
+            const index = state.findIndex(blockView => blockView.block);
+            const newTopElement = stateCopy.slice(index, 1);
+
+            return [
+                ...stateCopy,
+                newTopElement
             ];
         default:
             return state;

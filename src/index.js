@@ -9,14 +9,20 @@ import TheOneBuilder from "./Logic/Builder/TheOneBuilder";
 import {addBlock} from "./Logic/Redux/actions";
 import {initialState} from "./Logic/Redux/reducers";
 import blockStore from "./Logic/Redux/reducers";
+import {InterpreterProvider} from "./Contexts/InterpreterContext";
+// import interpreter from 'InterpreterNan'
 
 const store = createStore(blockStore, initialState);
 
 store.dispatch(addBlock(TheOneBuilder.buildBlock('Hello')));
 
+console.log(require('os'));
+
 render(
     <Provider store={store}>
-        <App />
+        <InterpreterProvider value={5}>
+            <App />
+        </InterpreterProvider>
     </Provider> , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

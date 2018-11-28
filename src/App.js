@@ -3,15 +3,9 @@ import './App.css';
 import TheOneBuilder from "./Logic/Builder/TheOneBuilder";
 import {connect} from "react-redux";
 import {addBlock} from "./Logic/Redux/actions";
-import BlockView from "./Components/BlockView";
 import Point from "./Logic/Point";
-import ConnectionView from "./Components/ConnectionView";
 
 class App extends Component {
-    constructor(props){
-        super(props);
-    }
-
     addBlock(x, y){
         this.props.addBlock(TheOneBuilder.buildBlock('Test'), new Point(x, y));
     }
