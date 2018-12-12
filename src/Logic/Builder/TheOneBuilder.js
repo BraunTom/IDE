@@ -20,6 +20,10 @@ export default class TheOneBuilder{     //to build them all
         return TheOneBuilder.blockBuilder.buildBlock(TheOneBuilder.ID++, name);
     }
 
+    static buildBlockFromPrimitive(primitive){
+        return TheOneBuilder.blockBuilder.buildBlockFromPrimitive(primitive);
+    }
+
     static buildLeftDataPorts(count, block){
         return collect(x => TheOneBuilder.portBuilder.buildLeftDataPort(x, block), count);
     }

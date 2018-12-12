@@ -12,8 +12,7 @@ class BlockView extends Component {
 
         this.flowConnections = <PortContainer ports={this.block.flowConnections}/>;
         this.dataConnections = <PortContainer ports={this.block.dataConnections}/>;
-
-        this.state = {position: this.props.inititalPosition};
+        this.state = {position: this.props.initialPosition};
     }
 
     get position(){

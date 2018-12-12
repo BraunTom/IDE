@@ -3,7 +3,6 @@ import Point from "../Logic/Point";
 
 export default class ConnectionView extends Component{
     asData(point){
-        console.log(point);
         return Array.from(point).join(',');
     }
 

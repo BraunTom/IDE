@@ -15,7 +15,7 @@ export const VisibilityFilters = {
 };
 
 export function addBlock(block, position = new Point(0, 0)){
-    const blockView = <BlockView block={block} inititalPosition={position}/>;
+    const blockView = <BlockView key={block.ID} block={block} initialPosition={position}/>;
     return { type: ADD_BLOCK, block, blockView };
 }
 

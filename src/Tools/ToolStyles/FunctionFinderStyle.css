@@ -1,0 +1,16 @@
+.FunctionFinder{
+    position: absolute;
+    display: inline-block;
+    background: #bbb;
+    overflow: hidden;
+    border-radius: 3px;
+}
+
+.FunctionFinder li{
+    cursor: pointer;
+
+}
+
+.FunctionFinder li:hover{
+    background: #aaa;
+}
