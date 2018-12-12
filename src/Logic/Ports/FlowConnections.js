@@ -1,8 +1,8 @@
 import TheOneBuilder from "../Builder/TheOneBuilder";
 
 export default class FlowConnections{
-    constructor(inputCount, outputCount){
-        this.inputs = TheOneBuilder.buildLeftFlowPorts(inputCount, this);
-        this.outputs = TheOneBuilder.buildRightFlowPorts(outputCount, this);
+    constructor(block, inputs, outputs){
+        this.inputs = TheOneBuilder.buildLeftFlowPorts(inputs.length, block);
+        this.outputs = TheOneBuilder.buildRightFlowPorts(outputs.length, block);
     }
 }

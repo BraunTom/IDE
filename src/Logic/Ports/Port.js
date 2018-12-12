@@ -1,9 +1,11 @@
+import config from '../../Configuration/TypeColor'
+
 export default class Port{
-    constructor(ID, owner, type, gridArea, color = 'black'){
+    constructor(ID, owner, type, dataType, gridArea){
         this.ID = ID;
         this._gridArea = gridArea;
-        this.color = color;
         this.type = type;   // { type, direction }
+        this.dataType = dataType;
         this.owner = owner;
     }
 
@@ -16,7 +18,7 @@ export default class Port{
     }
 
     get backgroundColor(){
-        return this.color;
+        return config[this.dataType];
     }
 
     style(){

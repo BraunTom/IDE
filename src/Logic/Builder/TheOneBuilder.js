@@ -25,11 +25,11 @@ export default class TheOneBuilder{     //to build them all
     }
 
     static buildLeftDataPorts(count, block){
-        return collect(x => TheOneBuilder.portBuilder.buildLeftDataPort(x, block), count);
+        return collect(x => TheOneBuilder.portBuilder.buildLeftDataPort(x, block, 'Boolean'), count);
     }
 
     static buildRightDataPorts(count, block){
-        return collect(x => TheOneBuilder.portBuilder.buildRightDataPort(x, block), count);
+        return collect(x => TheOneBuilder.portBuilder.buildRightDataPort(x, block, 'Boolean'), count);
     }
 
     static buildLeftFlowPorts(count, block){
