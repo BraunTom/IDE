@@ -4,6 +4,19 @@ import {addConnection, setDragStart} from "../Logic/Redux/actions";
 import {connect} from "react-redux";
 
 class PortView extends Component{
+    constructor(props){
+        super(props);
+        this.dependentConnections = [];
+    }
+
+    addConnection(connection){
+        this.dependentConnections.push(connection);
+    }
+
+    removeConnection(connection){
+        this.dependentConnections.splice(this.dependentConnections.indexOf(connection), 1);
+    }
+
     dragOver(e){
         if(this.props.dragStart !== this && this.props.dragStart.port.matches(this.port)){
             e.preventDefault();
@@ -21,6 +34,20 @@ class PortView extends Component{
 
     static drop(e){
         this.props.addConnection(this.props.dragStart, this);
+    }
+
+    componentDidMount(){
+        this.props.container.dependents.push(this);
+    }
+
+    componentWillUnmount(){
+        this.props.container.dependents.slice(this.props.container.dependents.indexOf(this), 1);
+    }
+
+    update(){
+        for(const connection of this.dependentConnections){
+            connection.update();
+        }
     }
 
     render(){

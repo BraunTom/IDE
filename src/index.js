@@ -13,6 +13,8 @@ import BlockStore from "./Logic/Builder/BlockStore";
 
 const store = createStore(blockStore, initialState);
 BlockStore.importBlocks(interpreter.primitives());
+console.log(interpreter);
+console.log(store);
 
 render(
     <Provider store={store}>

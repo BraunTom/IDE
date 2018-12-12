@@ -7,10 +7,12 @@ export default class DataPortContainer extends Component{
         super(props);
         this.state = {inputPortView: this.generatePortViewFor(this.props.ports.inputs),
                       outputPortView: this.generatePortViewFor(this.props.ports.outputs)};
+        this.dependents = [];
+
     }
 
     generatePortViewFor(array){
-        return array.map(port => <PortView key={port.ID} port={port} style={port.style()}/>);
+        return array.map(port => <PortView container={this} key={port.ID} port={port} style={port.style()}/>);
     }
 
     generateGridTemplateAreas(count){
@@ -21,6 +23,20 @@ export default class DataPortContainer extends Component{
         }
 
         return result.join('\n');
+    }
+
+    update(){
+        for (const dependent of this.dependents) {
+            dependent.update();
+        }
+    }
+
+    componentDidMount(){
+        this.props.view.dependents.push(this);
+    }
+
+    componentWillUnmount(){
+        this.props.view.dependents.slice(this.props.view.dependents.indexOf(this), 1);
     }
 
     render(){

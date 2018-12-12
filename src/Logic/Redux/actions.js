@@ -37,6 +37,8 @@ export function addConnection(start, end){
 }
 
 export function removeConnection(connectionView){
+    connectionView.props.start.removeConnection(connectionView);
+    connectionView.props.end.removeConnection(connectionView);
     return { type: REMOVE_CONNECTION, connectionView}
 }
 

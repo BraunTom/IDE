@@ -10,8 +10,10 @@ class BlockView extends Component {
     constructor(props){
         super(props);
 
-        this.flowConnections = <PortContainer ports={this.block.flowConnections}/>;
-        this.dataConnections = <PortContainer ports={this.block.dataConnections}/>;
+        this.dependents = [];
+
+        this.flowConnections = <PortContainer view={this} ports={this.block.flowConnections}/>;
+        this.dataConnections = <PortContainer view={this} ports={this.block.dataConnections}/>;
         this.state = {position: this.props.initialPosition};
     }
 
@@ -42,6 +44,12 @@ class BlockView extends Component {
 
     drag(position){
         this.setPosition(...position);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot){
+        for (const dependent of this.dependents) {
+            dependent.update();
+        }
     }
 
     render() {

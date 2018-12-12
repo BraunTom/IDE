@@ -27,6 +27,20 @@ class ConnectionView extends Component{
         this.props.removeConnection(this);
     }
 
+    componentDidMount(){
+        this.props.start.addConnection(this);
+        this.props.end.addConnection(this);
+    }
+
+    componentWillUnmount(){
+        this.props.start.removeConnection(this);
+        this.props.end.removeConnection(this);
+    }
+
+    update(){
+        this.forceUpdate()
+    }
+
     render(){
         return (
             <g>
