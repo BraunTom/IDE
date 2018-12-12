@@ -9,8 +9,10 @@ import {initialState} from "./Logic/Redux/reducers";
 import blockStore from "./Logic/Redux/reducers";
 import {InterpreterProvider} from "./Contexts/InterpreterContext";
 import interpreter from 'InterpreterNan'
+import BlockStore from "./Logic/Builder/BlockStore";
 
 const store = createStore(blockStore, initialState);
+BlockStore.importBlocks(interpreter.primitives());
 
 render(
     <Provider store={store}>

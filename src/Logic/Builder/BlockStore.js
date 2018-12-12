@@ -1,3 +1,5 @@
+import TheOneBuilder from "./TheOneBuilder";
+
 export default class BlockStore{
     static store = new Map();
 
@@ -11,5 +13,15 @@ export default class BlockStore{
 
     static remove(ID){
         BlockStore.store.delete(ID);
+    }
+
+    static get blocks(){
+        return Array.from(BlockStore.store.values());
+    }
+
+    static importBlocks(blockSpecs){
+        for (const blockSpec of blockSpecs) {
+            TheOneBuilder.buildBlockFromPrimitive(blockSpec);
+        }
     }
 }

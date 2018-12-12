@@ -17,7 +17,6 @@ class App extends Component {
     }
 
     doubleClick(e){
-        // this.addBlock(e.pageX, e.pageY);
         this.spawnFunctionFinderAt(e.pageX, e.pageY);
     }
 

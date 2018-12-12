@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import Point from "../Logic/Point";
+import {addBlock, removeConnection} from "../Logic/Redux/actions";
+import connect from "react-redux/es/connect/connect";
 
-export default class ConnectionView extends Component{
+let color = 'red';
+
+class ConnectionView extends Component{
     asData(point){
         return Array.from(point).join(',');
     }
@@ -19,9 +23,29 @@ export default class ConnectionView extends Component{
                 ${centerX},${endPosition.y} ${this.asData(endPosition)}`;
     }
 
+    click(){
+        this.props.removeConnection(this);
+    }
+
     render(){
         return (
-            <path style={{fill: 'none', stroke: 'red'}} d={this.pathData()}/>
+            <g>
+                <path style={{fill: 'none', stroke: color}} d={this.pathData()}/>
+                <path style={{fill: 'none', stroke: 'transparent', strokeWidth: 10}}
+                      d={this.pathData()} onClick={this.click.bind(this)} />
+            </g>
         );
     }
 }
+
+function mapStateToProps(state){
+    return {}
+}
+
+function mapDispatchToProps(dispatch){
+    return {
+        removeConnection: (connectionView) => removeConnection(connectionView)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ConnectionView)

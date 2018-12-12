@@ -6,6 +6,7 @@ import Point from "../../Logic/Point";
 import {addBlock} from "../../Logic/Redux/actions";
 import connect from "react-redux/es/connect/connect";
 import TheOneBuilder from "../../Logic/Builder/TheOneBuilder";
+import BlockStore from "../../Logic/Builder/BlockStore";
 
 class FunctionFinder extends Component{
     constructor(props){
@@ -32,9 +33,9 @@ class FunctionFinder extends Component{
         this.setPosition(...position);
     }
 
-    onclick(primitive){
+    onclick(block){
         return () => {
-            this.props.addBlock(TheOneBuilder.buildBlockFromPrimitive(primitive), this.position);
+            this.props.addBlock(block, this.position);
             this.props.remove();
         }
     }
@@ -47,11 +48,8 @@ class FunctionFinder extends Component{
                         drag={this.drag.bind(this)}
                         title={'FunctionFinder'}/>
                 <ul>
-                    <InterpreterConsumer>
-                        {context => context.primitives().map((primitive, index) =>
-                            <li key={index}
-                                onClick={this.onclick(primitive).bind(this)}>{primitive.name} </li>)}
-                    </InterpreterConsumer>
+                    {BlockStore.blocks.map((block, index) =>
+                        <li key={index} onClick={this.onclick(block).bind(this)}>{block.name} </li>)}
                 </ul>
             </div>
         );

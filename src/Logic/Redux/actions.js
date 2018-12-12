@@ -6,6 +6,7 @@ import BlockView from "../../Components/BlockView";
 export const ADD_BLOCK = 'ADD_BLOCK';
 export const SET_DRAG_START = 'SET_DRAG_START';
 export const ADD_CONNECTION = 'ADD_CONNECTION';
+export const REMOVE_CONNECTION = 'REMOVE_CONNECTION';
 export const UPDATE_BLOCK_NAME = 'UPDATE_BLOCK_NAME';
 export const BRING_BLOCK_TO_FRONT = 'BRING_BLOCK_TO_FRONT';
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
@@ -27,10 +28,16 @@ export function bringBlockToFront(block){
     return { type: BRING_BLOCK_TO_FRONT, block }
 }
 
+
+// TODO: Handle connections correctly
 export function addConnection(start, end){
     const connection = {};
     const connectionView = <ConnectionView start={start} end={end}/>;
     return { type: ADD_CONNECTION, connection, connectionView };
+}
+
+export function removeConnection(connectionView){
+    return { type: REMOVE_CONNECTION, connectionView}
 }
 
 export function setDragStart(start){

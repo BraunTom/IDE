@@ -9,6 +9,5 @@ export default class Block{
 
         this.flowConnections = new FlowConnections(this, flowsIn, flowsOut);
         this.dataConnections = new DataConnections(this, dataIn, dataOut);
-        console.log(this, dataIn, dataOut);
     }
 }

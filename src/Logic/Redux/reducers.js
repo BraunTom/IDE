@@ -1,6 +1,6 @@
 import {
     ADD_BLOCK,
-    ADD_CONNECTION, BRING_BLOCK_TO_FRONT,
+    ADD_CONNECTION, BRING_BLOCK_TO_FRONT, REMOVE_CONNECTION,
     SET_DRAG_START,
     SET_VISIBILITY_FILTER,
     UPDATE_BLOCK_NAME,
@@ -78,6 +78,10 @@ function connectionViews(state = [], action){
             return [
                 ...state,
                 action.connectionView
+            ];
+        case REMOVE_CONNECTION:
+            return [
+                ...state.filter(connectionView => connectionView !== action.connectionView)
             ];
         default:
             return state;
